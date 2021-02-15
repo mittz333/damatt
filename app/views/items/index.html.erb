@@ -1,0 +1,18 @@
+<header class='top-page-header'>
+      <% if member_signed_in? %>
+        <%# <li><%= link_to current_member.nickname, "#", class: "member-nickname" %></li> %>
+        <li><%= link_to 'ログアウト', destroy_member_session_path, method: :delete, class: "logout" %></li>
+      <% else %>
+        <li><%= link_to 'ログイン', new_member_session_path, class: "login" %></li>
+        <li><%= link_to '新規登録', new_member_registration_path, class: "sign-up" %></li>
+      <% end %>
+</header>
+
+<h1>Items#index</h1>
+
+<%= link_to(new_item_path, class: 'registration-btn') do %>
+  <span class='registration-btn-text'>出品する</span>
+  <%= image_tag '' , size: '185x50' ,class: "registration-btn-icon" %>
+<% end %>
+
+<p>Find me in app/views/items/index.html.erb</p>
