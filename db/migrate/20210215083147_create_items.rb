@@ -1,4 +1,4 @@
-class CreateItem < ActiveRecord::Migration[6.0]
+class CreateItems < ActiveRecord::Migration[6.0]
   def change
     create_table :items do |t|
       t.string :name, null: false
@@ -7,7 +7,7 @@ class CreateItem < ActiveRecord::Migration[6.0]
       t.integer :location_id, null: false
       t.integer :department_id, null: false
       t.date :purchase_date
-      t.references :user, foreign_key: true      
+      t.references :member, foreign_key: true      
 
       t.timestamps
     end
