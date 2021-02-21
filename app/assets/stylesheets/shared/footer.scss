@@ -1,0 +1,31 @@
+/* 下部広告部分 */
+/* items/index.htmlの広告cssを所々使いまわしています。 */
+
+.footer {
+  width: 100vw;
+  padding: 2vh 0;
+  color: #FFF;
+  background-color: #272727;
+  text-align: center;
+}
+
+.footer-contents {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2vh;
+}
+
+.footer-link {
+  color: #FFF;
+  font-size: 12px;
+  line-height: 30px;
+}
+
+.logo-soft {
+  width: 10vh;
+  vertical-align: bottom;
+}
+
+.footer>p {
+  font-size: 14px;
+}

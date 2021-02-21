@@ -1,18 +1,53 @@
-<header class='top-page-header'>
-      <% if member_signed_in? %>
-        <%# <li><%= link_to current_member.nickname, "#", class: "member-nickname" %></li> %>
-        <li><%= link_to 'ログアウト', destroy_member_session_path, method: :delete, class: "logout" %></li>
-      <% else %>
-        <li><%= link_to 'ログイン', new_member_session_path, class: "login" %></li>
-        <li><%= link_to '新規登録', new_member_registration_path, class: "sign-up" %></li>
-      <% end %>
-</header>
+<%= render "shared/header" %>
 
-<h1>Items#index</h1>
+<div class='item-contents container-fluid'>
+  <div class="subtitle">
+    <ul class="item-lists">
+      <div class="row">
+        <% @items.each do |item| %>
+          <li class="list col-3">
+            <%= link_to item_path(item) do %>
+              <div class='item-img-content'>
+                <%= image_tag item.image , class: "item-img img-fluid" %>
+              </div>
+              <div class='item-info'>
+
+                <table class="table table-sm">
+                  <thead>
+                    <tr>
+                      <th scope="col">名前</th>
+                      <td><%= item.name %> </td>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row">カテゴリ</th>
+                      <td><%= item.category.name %> </td>
+                    </tr>
+                    <tr>
+                      <th scope="row">部門</th>
+                      <td><%= item.department.name %> </td>
+                    </tr>
+                    <tr>
+                      <th scope="row">ロケーション</th>
+                      <td><%= item.location.name %> </td>
+                    </tr>
+                  </tbody>
+                </table>
+
+              </div>
+            <% end %>
+          </li>
+        <% end %>
+      </div>
+    </ul>
+  </div>
+</div>
+
 
 <%= link_to(new_item_path, class: 'registration-btn') do %>
-  <span class='registration-btn-text'>出品する</span>
-  <%= image_tag '' , size: '185x50' ,class: "registration-btn-icon" %>
+  <span class='registration-btn-text'>備品登録する</span>
+  <%= image_tag 'item-registration-logo.png' , size: '100x100' ,class: "registration-btn-icon" %>
 <% end %>
 
-<p>Find me in app/views/items/index.html.erb</p>
+<%= render "shared/footer" %>
