@@ -6,7 +6,8 @@ class Item < ApplicationRecord
   belongs_to :department
   belongs_to :location
   has_one_attached :image
-
+  has_one :lending
+  
   # validates :content, presence: true
 
 end

@@ -1,0 +1,10 @@
+  <% if @item.lending != nil %>
+    <div class='lent-out'>
+      <span>貸出中!!</span>
+    </div>
+    使用者：
+    <%= @item.lending.member.name %>
+    (部門：
+    <%= @item.lending.member.department.name %>
+    )
+  <% end %>  

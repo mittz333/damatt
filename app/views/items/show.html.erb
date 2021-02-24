@@ -1,111 +1,145 @@
 <%= render "shared/header" %>
 
-<div class="item-lending-status">
-
-
 <div class="item-show">
   <div class="item-box">
     <h4 class="name">
       <%= @item.name %>
     </h4>
+    <%= render "lendingstatus" %>
     <div class='item-img-content'>
-      <%= image_tag @item.image ,class:"item-box-img" %>
-      <%# <% if @item.purchase != nil %>
-        <%# <div class='sold-out'> %>
-          <%# <span>Sold Out!!</span> %>
-        <%# </div> %>
-      <%# <% end %> %> %>
+      <%= image_tag @item.image ,class:"item-box-img img-fluid" %>
     </div>
 
-
-    <div class="item-price-box">
-      <span class="item-price">
-        <span class="sell-yen">¥</span>
-        <%= @item.price %>        
-      </span>
-      <span class="item-postage">
-        <%= @item.shipping_charge.name %>
-      </span>
-    </div>
-
-    <% if user_signed_in? && @item.purchase == nil %>
-      <% if current_user.id == @item.user_id %>
-        <%= link_to '商品の編集', edit_item_path(@item.id), method: :get, class: "item-red-btn" %>
-        <p class='or-text'>or</p>
-        <%= link_to '削除', item_path(@item.id), method: :delete, class:'item-destroy' %>
-      <% else %>
-        <%= link_to '購入画面に進む', item_purchases_path(@item.id) ,class:"item-red-btn"%>
-      <% end %>
-    <% end %>
-
-    <div class="item-explain-box">
-      <span><%= @item.detail %></span>
-    </div>
     <table class="detail-table">
       <tbody>
-        <tr>
-          <th class="detail-item">出品者</th>
-          <td class="detail-value"><%= @item.user.nickname %></td>
-        </tr>
         <tr>
           <th class="detail-item">カテゴリー</th>
           <td class="detail-value"><%= @item.category.name %></td>
         </tr>
         <tr>
-          <th class="detail-item">商品の状態</th>
-          <td class="detail-value"><%= @item.condition.name %></td>
+          <th class="detail-item">詳細</th>
+          <td class="detail-value"><%= @item.detail %></td>
         </tr>
         <tr>
-          <th class="detail-item">配送料の負担</th>
-          <td class="detail-value"><%= @item.shipping_charge.name %></td>
+          <th class="detail-item">ロケーション</th>
+          <td class="detail-value"><%= @item.location.name %></td>
         </tr>
         <tr>
-          <th class="detail-item">発送元の地域</th>
-          <td class="detail-value"><%= @item.prefecture.name %></td>
+          <th class="detail-item">部門</th>
+          <td class="detail-value"><%= @item.department.name %></td>
         </tr>
         <tr>
-          <th class="detail-item">発送日の目安</th>
-          <td class="detail-value"><%= @item.shipping_day.name %></td>
+          <th class="detail-item">管理者</th>
+          <td class="detail-value"><%= @item.member.name %></td>
+        </tr>
+        <tr>
+          <th class="detail-item">購入日</th>
+          <td class="detail-value"><%= @item.purchase_date %></td>
         </tr>
       </tbody>
     </table>
-    <div class="option">
-      <div class="favorite-btn">
-        <%= image_tag "star.png" ,class:"favorite-star-icon" ,width:"20",height:"20"%>
-        <span>お気に入り 0</span>
+  </div>
+</div>
+
+<div class="lending-wrap">
+  <h2>利用状況</h2>
+  <%= render "lendingstatus" %>
+  <%= form_with(model: [@item, @lending], local: true) do |f|%>
+    <div class="form-group">
+      <div class='input-lending-wrap'>
+        <%= f.label :starttime, '開始時間' %>
+        <%= f.datetime_select(
+                      :starttime,
+                      class:'select-starttime',
+                      id:"starttime-datetime",
+                      use_month_numbers: true,
+                      prompt:'--',
+                      start_year: Date.today.year,
+                      end_year: (Date.today.year + 1),
+                      minute_step: 15,
+                      date_separator: '',
+                      time_separator: '',
+                      datetime_separator: "___") %>
       </div>
-      <div class="report-btn">
-        <%= image_tag "flag.png" ,class:"report-flag-icon" ,width:"20",height:"20"%>
-        <span>不適切な商品の通報</span>
+      <div class='input-lending-wrap'>
+        <%= f.label :finishtime, '終了時間' %>
+        <%= f.datetime_select(
+                      :finishtime,
+                      class:'select-finishtime',
+                      id:"finishtime-datetime",
+                      use_month_numbers: true,
+                      prompt:'--',
+                      start_year: Date.today.year,
+                      end_year: (Date.today.year + 1),
+                      minute_step: 15,
+                      date_separator: '',
+                      time_separator: '',
+                      datetime_separator: "___") %>
       </div>
     </div>
-  </div>
-
-  <div class="comment-box">
-    <form>
-      <textarea class="comment-text"></textarea>
-      <p class="comment-warn">
-        相手のことを考え丁寧なコメントを心がけましょう。
-        <br>
-        不快な言葉遣いなどは利用制限や退会処分となることがあります。
-      </p>
-      <button type="submit" class="comment-btn">
-        <%= image_tag "comment.png" ,class:"comment-flag-icon" ,width:"20",height:"25"%>
-        <span>コメントする<span>
-      </button>
-    </form>
-  </div>
-  <div class="links">
-    <a href="#" class="change-item-btn">
-      ＜ 前の商品
-    </a>
-    <a href="#" class="change-item-btn">
-      後ろの商品 ＞
-    </a>
-  </div>
-  <%# 詳細ページで表示されている商品のカテゴリー名を表示しましょう %>
-  <a href=“#” class=‘another-item’><%= @item.category.name %>をもっと見る</a>
-  <%# //詳細ページで表示されている商品のカテゴリー名を表示しましょう %>
+    <div class="actions">
+      <% if @item.lending == nil %>
+        <%= f.submit "利用する", class: "btn btn-primary btn-lending"  %>
+      <% end %>
+    </div>
+  <% end %>
+  <% if @item.lending != nil && @item.lending.member_id == current_member.id %>
+    <%= button_to '返却する', item_lending_path(@item.id), method: :delete \
+        , class: "btn btn-warning btn-lending" %>
+  <% end %>
 </div>
+
+<div class="reservation-wrap">
+  <h2>予約登録</h2>
+  <%= form_with(model: [@item, @reservation], local: true) do |f|%>
+    <div class="form-group">
+      <div class='input-lending-wrap'>
+        <%= f.label :starttime, '予約開始時間' %>
+        <%= f.datetime_select(
+                      :starttime,
+                      class:'select-starttime',
+                      id:"starttime-datetime",
+                      use_month_numbers: true,
+                      prompt:'--',
+                      start_year: Date.today.year,
+                      end_year: (Date.today.year + 1),
+                      minute_step: 15,
+                      date_separator: '',
+                      time_separator: '',
+                      datetime_separator: "___") %>
+      </div>
+      <div class='input-lending-wrap'>
+        <%= f.label :finishtime, '終了時間' %>
+        <%= f.datetime_select(
+                      :finishtime,
+                      class:'select-finishtime',
+                      id:"finishtime-datetime",
+                      use_month_numbers: true,
+                      prompt:'--',
+                      start_year: Date.today.year,
+                      end_year: (Date.today.year + 1),
+                      minute_step: 15,
+                      date_separator: '',
+                      time_separator: '',
+                      datetime_separator: "___") %>
+      </div>
+    </div>
+    <div class="actions">
+      <%= f.submit "予約する", class: "btn btn-Info btn-lending"  %>
+    </div>
+  <% end %>
+</div>
+
+
+  <%= link_to '予約', '#', class: 'item-reservation' %>
+  <% if member_signed_in? && @item.lending == nil %>
+    <%# <% if current_member.id == @item.member_id %>
+      <%= link_to '削除', item_path(@item.id), method: :delete, class:'item-destroy' %>
+      <%= link_to '備品の編集', edit_item_path(@item.id), method: :get, class: "item-red-btn" %>
+    <%# <% end %>
+  <% end %>
+</div>
+
+
 
 <%= render "shared/footer" %>

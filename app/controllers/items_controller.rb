@@ -23,6 +23,17 @@ class ItemsController < ApplicationController
   end
 
   def show
+    # @lending.starttime = Date.today
+    # @lending.starttime = Time.now
+    if @item.lending == nil
+      @lending = Lending.new
+      @lending.starttime = Time.current.floor_to(15.minutes)
+      @lending.finishtime = Time.current.floor_to(15.minutes) + 3600 * 2
+    else
+      # binding.pry
+      # set_lending
+      @lending = Lending.find_by(item_id: @item.id)
+    end
   end
 
   def edit
@@ -53,6 +64,10 @@ class ItemsController < ApplicationController
 
   def set_item
     @item = Item.find(params[:id])
+  end
+
+  def set_lending
+    @lending = Lending.find_by(member_id: @item.member_id, item_id: @item.id)
   end
   
 end
