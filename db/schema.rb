@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_21_021018) do
+ActiveRecord::Schema.define(version: 2021_02_24_021500) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -71,8 +71,21 @@ ActiveRecord::Schema.define(version: 2021_02_21_021018) do
     t.index ["reset_password_token"], name: "index_members_on_reset_password_token", unique: true
   end
 
+  create_table "reservations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.datetime "starttime"
+    t.datetime "finishtime"
+    t.bigint "item_id"
+    t.bigint "member_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["item_id"], name: "index_reservations_on_item_id"
+    t.index ["member_id"], name: "index_reservations_on_member_id"
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "items", "members"
   add_foreign_key "lendings", "items"
   add_foreign_key "lendings", "members"
+  add_foreign_key "reservations", "items"
+  add_foreign_key "reservations", "members"
 end
