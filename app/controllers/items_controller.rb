@@ -10,6 +10,10 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
+    @item.purchase_date = Date.current
+    @item.member_id = current_member.id
+    @item.department_id = current_member.department.id
+
     # binding.pry
   end
 
@@ -34,6 +38,13 @@ class ItemsController < ApplicationController
       # set_lending
       @lending = Lending.find_by(item_id: @item.id)
     end
+    @reservation = Reservation.new
+    @reservation.starttime = Time.current.floor_to(1440.minutes).since(1.days) + 3600 * 8
+    @reservation.finishtime = @reservation.starttime + 3600 * 2
+    # 
+    @reservations = Reservation.where(item_id: @item.id).order(starttime: 'ASC')
+    # binding.pry
+
   end
 
   def edit

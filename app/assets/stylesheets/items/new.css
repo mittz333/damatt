@@ -1,7 +1,6 @@
 /* border-bottom: 1px solid #eee; */
 
-
-.items-sell-contents {
+.items-registration-contents {
   background-color: #f5f5f5;
   font-family: "Source Sans Pro", Helvetica, Arial, "æ¸¸ã‚´ã‚·ãƒƒã‚¯ä½“", "YuGothic", "ãƒ¡ã‚¤ãƒªã‚ª", "Meiryo", sans-serif;
   font-size: 14px;
@@ -11,24 +10,29 @@
   min-width: 500px;
 }
 
-.items-sell-header {
-  padding: 5vh 0;
+.items-registration-header {
+  padding: 0vh 0;
   text-align: center;
 }
 
-.items-sell-main {
+.items-registration-main {
   background-color: #FFF;
   width: 70vw;
   min-width: 450px;
-  padding: 10vh 15vw;
+  padding: 5vh 10vw;
 }
 
-.items-sell-title {
+.items-registration-title {
   font-size: 22px;
   font-weight: bold;
   text-align: center;
 }
 
+.items-detail-title {
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+}
 /* 共通 */
 .indispensable {
   background: #ea352d;
@@ -43,7 +47,8 @@
 .weight-bold-text {
   font-weight: bold;
   min-width: 170px;
-  margin-bottom: 10px;
+  margin-bottom: 6px;
+  font-size: 18px;
 }
 
 .select-box {
@@ -93,12 +98,12 @@
 
 /* 商品名と商品説明 */
 .new-items {
-  padding: 2vh 0;
+  padding: 1vh 0;
 }
 
 .items-text {
   width: 100%;
-  padding: 16px 16px 8px;
+  padding: 12px 12px 6px;
   border-radius: 4px;
   border: 1px solid #ccc;
   font-size: 16px;
@@ -119,7 +124,7 @@
 }
 
 .items-detail>.form {
-  width: 300px;
+  width: 70%;
   padding: 2vh 0;
 }
 
@@ -129,39 +134,6 @@
 
 /* /商品の詳細など */
 
-/* 販売価格 */
-.sell-price {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-}
-
-.price-content {
-  width: 300px;
-  border-bottom: 1px solid #ccc;
-  padding: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.price-text {
-  /* min-width: 170px; */
-  display: flex;
-  align-items: center;
-}
-
-.sell-yen {
-  font-size: 18px;
-}
-
-.price-input {
-  height: 30px;
-  text-align: right;
-  padding-right: 10px;
-}
-
-/* /販売価格 */
 
 /* 注意書き */
 .caution {
@@ -199,31 +171,31 @@
   text-decoration: none;
 }
 
-/* /下部ボタン */
 
-.items-sell-footer {
-  background-color: #f5f5f5;
-  width: 60vw;
-  padding: 3ch 0;
+.input-purchase-date-wrap {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-wrap: wrap;
 }
 
-
-.items-sell-footer>.menu {
+.registration-btn-contents {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin: 3vh 0;
 }
 
-.menu>li>a {
-  color: black;
-  font-size: 12px;
-  margin: 2vw;
+.input-purchase-date-wrap select {
+  width: 75px;
+  margin-top: 5px;
+  height: 45px;
+  padding-left: 10px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  background: #fff;
+  font-size: 15px;
+  cursor: pointer;
 }
 
-.inc {
-  font-size: 13px;
+.input-purchase-date-wrap p {
+  line-height: 60px;
+  padding: 0 5px;
 }

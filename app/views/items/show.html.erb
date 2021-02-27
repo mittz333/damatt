@@ -1,48 +1,55 @@
 <%= render "shared/header" %>
 
 <div class="item-show">
-  <div class="item-box">
-    <h4 class="name">
-      <%= @item.name %>
-    </h4>
-    <%= render "lendingstatus" %>
-    <div class='item-img-content'>
-      <%= image_tag @item.image ,class:"item-box-img img-fluid" %>
-    </div>
+  <h4 class="name">
+    <%= @item.name %>
+  </h4>
+  <%= render "lendingstatus" %>
+  <div class="item-box container">
+    <div class="row">
+      <div class='item-img-content col-lg-4 col-sm-12'>
+        <% if @item.image.attached? %>
+          <%= image_tag @item.image , class: "item-box-img img-fluid" %>
+        <% else %>
+          <%= image_tag "Dummy001.png", class:"item-box-img img-fluid" %>
+        <% end %>             
+      </div>
 
-    <table class="detail-table">
-      <tbody>
-        <tr>
-          <th class="detail-item">カテゴリー</th>
-          <td class="detail-value"><%= @item.category.name %></td>
-        </tr>
-        <tr>
-          <th class="detail-item">詳細</th>
-          <td class="detail-value"><%= @item.detail %></td>
-        </tr>
-        <tr>
-          <th class="detail-item">ロケーション</th>
-          <td class="detail-value"><%= @item.location.name %></td>
-        </tr>
-        <tr>
-          <th class="detail-item">部門</th>
-          <td class="detail-value"><%= @item.department.name %></td>
-        </tr>
-        <tr>
-          <th class="detail-item">管理者</th>
-          <td class="detail-value"><%= @item.member.name %></td>
-        </tr>
-        <tr>
-          <th class="detail-item">購入日</th>
-          <td class="detail-value"><%= @item.purchase_date %></td>
-        </tr>
-      </tbody>
-    </table>
+
+      <table class="detail-table col-lg-8 col-sm-12">
+        <tbody>
+          <tr>
+            <th class="detail-item">カテゴリー</th>
+            <td class="detail-value"><%= @item.category.name %></td>
+          </tr>
+          <tr>
+            <th class="detail-item">詳細</th>
+            <td class="detail-value"><%= @item.detail %></td>
+          </tr>
+          <tr>
+            <th class="detail-item">ロケーション</th>
+            <td class="detail-value"><%= @item.location.name %></td>
+          </tr>
+          <tr>
+            <th class="detail-item">部門</th>
+            <td class="detail-value"><%= @item.department.name %></td>
+          </tr>
+          <tr>
+            <th class="detail-item">管理者</th>
+            <td class="detail-value"><%= @item.member.name %></td>
+          </tr>
+          <tr>
+            <th class="detail-item">購入日</th>
+            <td class="detail-value"><%= @item.purchase_date %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
 
 <div class="lending-wrap">
-  <h2>利用状況</h2>
+  <h2>利用状況・利用登録</h2>
   <%= render "lendingstatus" %>
   <%= form_with(model: [@item, @lending], local: true) do |f|%>
     <div class="form-group">
@@ -54,8 +61,8 @@
                       id:"starttime-datetime",
                       use_month_numbers: true,
                       prompt:'--',
-                      start_year: Date.today.year,
-                      end_year: (Date.today.year + 1),
+                      start_year: Time.current.year,
+                      end_year: (Time.current.year + 1),
                       minute_step: 15,
                       date_separator: '',
                       time_separator: '',
@@ -69,8 +76,8 @@
                       id:"finishtime-datetime",
                       use_month_numbers: true,
                       prompt:'--',
-                      start_year: Date.today.year,
-                      end_year: (Date.today.year + 1),
+                      start_year: Time.current.year,
+                      end_year: (Time.current.year + 1),
                       minute_step: 15,
                       date_separator: '',
                       time_separator: '',
@@ -101,23 +108,23 @@
                       id:"starttime-datetime",
                       use_month_numbers: true,
                       prompt:'--',
-                      start_year: Date.today.year,
-                      end_year: (Date.today.year + 1),
+                      start_year: Time.current.year,
+                      end_year: (Time.current.year + 1),
                       minute_step: 15,
                       date_separator: '',
                       time_separator: '',
                       datetime_separator: "___") %>
       </div>
       <div class='input-lending-wrap'>
-        <%= f.label :finishtime, '終了時間' %>
+        <%= f.label :finishtime, '予約終了時間' %>
         <%= f.datetime_select(
                       :finishtime,
                       class:'select-finishtime',
                       id:"finishtime-datetime",
                       use_month_numbers: true,
                       prompt:'--',
-                      start_year: Date.today.year,
-                      end_year: (Date.today.year + 1),
+                      start_year: Time.current.year,
+                      end_year: (Time.current.year + 1),
                       minute_step: 15,
                       date_separator: '',
                       time_separator: '',
@@ -125,21 +132,53 @@
       </div>
     </div>
     <div class="actions">
-      <%= f.submit "予約する", class: "btn btn-Info btn-lending"  %>
+      <%= f.submit "予約する", class: "btn btn-info btn-lending"  %>
     </div>
   <% end %>
+  <div class="reservation-status-wrap">
+    <h2>予約状況</h2>
+    <% if @reservations %>
+      <table class="table table-sm table-striped">
+        <thead>
+          <tr>
+            <th>No.</th>
+            <th>開始時間</th>
+            <th>終了時間</th>
+            <th>利用者</th>
+            <th>部門</th>
+            <th>取消</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @reservations.each_with_index do |reservation, i| %>
+            <tr>
+              <td><%= i + 1 %> </td>
+              <td><%= reservation.starttime.strftime('%Y/%m/%d(%a) %H:%M') %> </td>
+              <td><%= reservation.finishtime.strftime('%m/%d %H:%M') %> </td>
+              <td><%= reservation.member.name %> </td>
+              <td><%= reservation.member.department.name %> </td>
+              <% if reservation.member_id == current_member.id %>
+                <td><%= button_to '取消', item_reservation_path(@item,reservation), method: :delete \
+                , class: "btn btn-danger btn-sm" , data: { confirm: '予約取消しますか？' } %> </td>
+              <% else %>
+                <td></td>
+              <% end %>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% end %>
+  </div>
 </div>
 
 
-  <%= link_to '予約', '#', class: 'item-reservation' %>
+<div>
   <% if member_signed_in? && @item.lending == nil %>
-    <%# <% if current_member.id == @item.member_id %>
+    <% if current_member.department.id == @item.member.department.id %>
       <%= link_to '削除', item_path(@item.id), method: :delete, class:'item-destroy' %>
       <%= link_to '備品の編集', edit_item_path(@item.id), method: :get, class: "item-red-btn" %>
-    <%# <% end %>
+    <% end %>
   <% end %>
 </div>
-
-
 
 <%= render "shared/footer" %>

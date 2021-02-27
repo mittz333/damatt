@@ -33,14 +33,6 @@ class LendingsController < ApplicationController
   end
 
   def update
-    # binding.pry
-    lending = Lending.find(params[:id])
-    if lending.update(lending_params)
-      redirect_to lending_path(params[:id])
-    else
-      @lending = lending
-      render :edit
-    end
   end
 
   def destroy
