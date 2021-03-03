@@ -1,0 +1,28 @@
+.newsession-login {
+    margin-top: 25px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+}
+
+.newsession-title {
+  text-align: center;
+  margin: 10px 0 30px;
+  font-size: 1.5em
+}
+/* h4 {
+  text-align: center;
+  margin: 10px 0 30px;
+} */
+
+.newsession-button {
+  margin-top: 1em;
+}
+
+.login__reminder {
+  text-align: center;
+  margin-top: .5em;
+}
+
+.login__reminder-a {
+  color: black;
+  font-size: .8em;
+}

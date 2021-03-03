@@ -4,6 +4,9 @@
 
 <div class="items-registration-contents">
 
+  <%# なお、以下のrender内でdate_selectに与える年月の範囲については、edit時には合わなくなる恐れあり %>
+  <%# 分かっているけど、目を瞑る事にする %>
+
   <%= render partial: 'itemregistration', locals: {item: @item} %>
 
 </div>

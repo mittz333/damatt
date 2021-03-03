@@ -4,7 +4,7 @@ class ItemsController < ApplicationController
 
   def index
     # binding.pry
-    @items = Item.order(created_at: 'DESC')
+    @items = Item.order(created_at: 'DESC').includes(:member)
     # @items = Item.all
   end
 
@@ -70,7 +70,7 @@ class ItemsController < ApplicationController
 
   def item_params
     params.require(:item).permit(:name, :category_id, :detail, :location_id, :department_id,
-                                 :member_id, :purchase_date, :image)                 
+                                 :member_id, :purchase_date, :control_number, :image)                 
   end
 
   def set_item

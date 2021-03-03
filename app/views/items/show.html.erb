@@ -15,7 +15,6 @@
         <% end %>             
       </div>
 
-
       <table class="detail-table col-lg-8 col-sm-12">
         <tbody>
           <tr>
@@ -44,6 +43,14 @@
           </tr>
         </tbody>
       </table>
+    </div>
+    <div class="deleteedit-wrap">
+      <% if member_signed_in? && @item.lending == nil %>
+        <% if current_member.department.id == @item.member.department.id %>
+          <%= link_to '削除', item_path(@item.id), method: :delete, class:'item-destroy', data: { confirm: '削除しますか？' }  %>
+          <%= link_to '備品の編集', edit_item_path(@item.id), method: :get, class: "item-edit" %>
+        <% end %>
+      <% end %>
     </div>
   </div>
 </div>
@@ -90,7 +97,7 @@
       <% end %>
     </div>
   <% end %>
-  <% if @item.lending != nil && @item.lending.member_id == current_member.id %>
+  <% if member_signed_in? && @item.lending != nil && @item.lending.member_id == current_member.id %>
     <%= button_to '返却する', item_lending_path(@item.id), method: :delete \
         , class: "btn btn-warning btn-lending" %>
   <% end %>
@@ -157,7 +164,7 @@
               <td><%= reservation.finishtime.strftime('%m/%d %H:%M') %> </td>
               <td><%= reservation.member.name %> </td>
               <td><%= reservation.member.department.name %> </td>
-              <% if reservation.member_id == current_member.id %>
+              <% if member_signed_in? && reservation.member_id == current_member.id %>
                 <td><%= button_to '取消', item_reservation_path(@item,reservation), method: :delete \
                 , class: "btn btn-danger btn-sm" , data: { confirm: '予約取消しますか？' } %> </td>
               <% else %>
@@ -169,16 +176,7 @@
       </table>
     <% end %>
   </div>
-</div>
 
-
-<div>
-  <% if member_signed_in? && @item.lending == nil %>
-    <% if current_member.department.id == @item.member.department.id %>
-      <%= link_to '削除', item_path(@item.id), method: :delete, class:'item-destroy' %>
-      <%= link_to '備品の編集', edit_item_path(@item.id), method: :get, class: "item-red-btn" %>
-    <% end %>
-  <% end %>
 </div>
 
 <%= render "shared/footer" %>

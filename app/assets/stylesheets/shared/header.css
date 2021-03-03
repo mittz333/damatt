@@ -16,7 +16,7 @@
 }
 
 .damatt-icon {
-  width: 8vw;
+  width: 80px;
   margin-right: 8vw;
 }
 
@@ -80,7 +80,7 @@
 
 .member-name {
   text-decoration: none;
-  margin-right: 3vw;
+  margin-right: 1px;
   color: #333333;
   font-weight: bold;
 }
@@ -89,6 +89,7 @@
 .logout {
   text-decoration: none;
   color: #333333;
+  margin-left: 20px;
 }
 
 .login {

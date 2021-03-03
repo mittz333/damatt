@@ -16,7 +16,7 @@
     </ul>
     <ul class='lists-right'>
       <% if member_signed_in? %>
-        <li><%= link_to current_member.name, "#", class: "member-name" %></li>
+        <li><%= link_to current_member.name, edit_member_registration_path, class: "member-name" %>さん</li>
         <li><%= link_to 'ログアウト', destroy_member_session_path, method: :delete, class: "logout" %></li>
       <% else %>
         <li><%= link_to 'ログイン', new_member_session_path, class: "login" %></li>

@@ -5,7 +5,7 @@
     <ul class="item-lists">
       <div class="row">
         <% @items.each do |item| %>
-          <li class="list col-3">
+          <li class="list col-12 col-md-6 col-xl-3">
             <%= link_to item_path(item) do %>
               <div class='item-img-content'>
                 <% if item.image.attached? %>
@@ -23,6 +23,10 @@
                     </tr>
                   </thead>
                   <tbody>
+                    <tr>
+                      <th scope="row">管理番号</th>
+                      <td><%= item.control_number %> </td>
+                    </tr>
                     <tr>
                       <th scope="row">カテゴリ</th>
                       <td><%= item.category.name %> </td>

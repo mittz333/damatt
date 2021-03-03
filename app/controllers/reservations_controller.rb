@@ -4,7 +4,7 @@ class ReservationsController < ApplicationController
 
   def index
     # binding.pry
-    @reservations = Reservation.order(created_at: 'ASC')
+    @reservations = Reservation.order(created_at: 'ASC').includes([:member, :item])
     # @reservations = Reservation.all
   end
 
@@ -36,9 +36,9 @@ class ReservationsController < ApplicationController
   end
 
   def destroy
-    binding.pry
+    # binding.pry
     reservation = Reservation.find(params[:id])
-    binding.pry
+    # binding.pry
     reservation.destroy if member_signed_in? 
     redirect_to root_path
     # Reservationは同一itemで複数持てるから、注意

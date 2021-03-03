@@ -6,20 +6,20 @@
       <div class="card newsession-login">
         <div class="card-body">
           <P class="newsession-title">ログイン</P>
-          <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <form action="">
             <div class="form-group">
-              <%= f.label :email, 'メールアドレス' %><br/>
-              <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>            
+              <label for="email">メールアドレス</label>
+              <input type="text" name="email" id="email" class="form-control">
             </div>
             <div class="form-group">
-              <%= f.label :password , 'パスワード' %><br/>
-              <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>            
+              <label for="password">パスワード</label>
+              <input type="password" name="password" id="password" class="form-control">
             </div>
-            <%= f.submit "ログイン", class: "btn btn-primary w-100 newsession-button" %>
+            <button class="btn btn-primary w-100">ログイン</button>
             <div class="login__reminder">
               <%= link_to "パスワードをお忘れの方", new_password_path(resource_name), class: 'login__reminder-a' %>
             </div>
-          <% end %>      
+          </form>
         <div>
       <div>
     </div>
