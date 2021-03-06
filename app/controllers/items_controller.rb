@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
   before_action :authenticate_member!, except: [:index, :show]
   before_action :set_item, only: [:edit, :show, :destroy]
+  before_action :search_item, only: [:index, :search]
 
   def index
     # binding.pry
@@ -66,6 +67,13 @@ class ItemsController < ApplicationController
     redirect_to root_path
   end
 
+  def search
+    # binding.pry
+    @results = @p.result.includes(:member)  # 検索条件にマッチした商品の情報を取得
+    @items = @results
+    # binding.pry
+  end
+
   private
 
   def item_params
@@ -79,6 +87,10 @@ class ItemsController < ApplicationController
 
   def set_lending
     @lending = Lending.find_by(member_id: @item.member_id, item_id: @item.id)
+  end
+  
+  def search_item
+    @p = Item.ransack(params[:q])  # 検索オブジェクトを生成
   end
   
 end

@@ -1,4 +1,5 @@
 <%= render "shared/header" %>
+<%= render "search" %>
 
 <div class='item-contents container-fluid'>
   <div class="subtitle">
@@ -61,3 +62,9 @@
   </div>
 </div>
 
+<%= link_to(new_item_path, class: 'registration-btn') do %>
+  <span class='registration-btn-text'>備品登録する</span>
+  <%= image_tag 'item-registration-logo.png' , size: '100x100' ,class: "registration-btn-icon" %>
+<% end %>
+
+<%= render "shared/footer" %>

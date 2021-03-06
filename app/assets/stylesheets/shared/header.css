@@ -4,20 +4,36 @@
 
 .top-page-header {
   width: 100vw;
-  padding: 2vh 15vw;
+  padding: 1vh 2vw;
   display: flex;
   flex-direction: column;
+  background-color: rgb(47, 102, 255);
+  
 }
 
-.search-bar-contents {
+.damatt-icon-wrap {
+  width: 25vw;
+  /* padding: 2vh 2vw; */
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background-color: greenyellow;
+}
+
+.search-bar-contents {
+  width: 65vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: green;
 }
 
 .damatt-icon {
   width: 80px;
   margin-right: 8vw;
+  justify-content: space-between;
+  margin-left: 5px;
+
 }
 
 .search-form {

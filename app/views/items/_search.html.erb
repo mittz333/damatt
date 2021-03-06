@@ -1,0 +1,11 @@
+<div class="search-content">
+  <div class="keyword-search">
+    <%= f.label :title_or_content_or_image_title_cont, 'キーワードで検索', class: "search-label" %>
+    <%= f.search_field :title_or_content_or_image_title_cont, placeholder: "キーワードを入力", class: "search-box" %>
+  </div>
+  <div class="search-block">
+    <%= f.label :category_id_eq, 'カテゴリー' %>
+    <%= f.collection_select :category_id_eq, @category_id, :id, :name, include_blank: '指定無し' %>
+  </div>
+  <%= f.submit "検索", class: "search-btn" %>
+</div>

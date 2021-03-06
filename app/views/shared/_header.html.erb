@@ -1,18 +1,28 @@
 <%# CSS・・・assets/stylesheets/shared/header.css %>
 <header class='top-page-header'>
-  <div class='search-bar-contents'>
-    <%= link_to image_tag("damatt-logo.png", class:"damatt-icon"), "/" %>
-    <form class="search-form" action="#">
-      <input class='input-box' placeholder='キーワードから探す'>
-      <button class="search-button">
-        <%= image_tag "search.png", class:"search-icon" %>
-      </button>
-    </form>
+  <div class='nav'>
+    <div class="damatt-icon-wrap">
+      <%= link_to image_tag("damatt-logo.png", class:"damatt-icon"), "/" %>
+    </div>
+    <div class='search-bar-contents'>
+      <%= search_form_for @p, url: search_items_path do |f| %>
+        <%= f.label :name_or_detail_cont, 'キーワード' %>
+        <%= f.search_field :name_or_detail_cont, class: "input-box", placeholder: "キーワードを入力" %>
+        <br>
+        <%= f.label :category_id_eq, 'カテゴリー' %>
+        <%= f.collection_select :category_id_eq, Category.all, :id, :name, include_blank: '指定無し' %>
+        <%# <br> %>
+        <%= f.submit '検索', class:"btn btn-info mx-5" %>
+        <%# <br> %>
+      <% end %>
+    </div>
   </div>
   <div class='nav'>
     <ul class='lists-left'>
-      <li><%= link_to 'カテゴリー', "#", class: "category-list" %></li>
-      <li><%= link_to 'ブランド', "#", class: "brand-list" %></li>
+      パンくずリスト
+    </ul>
+    <ul class='lists-center'>
+      ページ情報
     </ul>
     <ul class='lists-right'>
       <% if member_signed_in? %>
@@ -25,3 +35,4 @@
     </ul>
   </div>
 </header>
+

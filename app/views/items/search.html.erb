@@ -1,0 +1,72 @@
+<%= render "/shared/header"%>
+
+<div class='item-contents container-fluid'>
+  <h5>
+    検索結果
+  </h5>
+  <div class="subtitle">
+    <ul class="item-lists">
+      <div class="row">
+        <% if @results.length !=0 %>
+          <% @results.each do |item| %>
+            <li class="list col-12 col-md-6 col-xl-3">
+              <%= link_to item_path(item) do %>
+                <div class='item-img-content'>
+                  <% if item.image.attached? %>
+                    <%= image_tag item.image , class: "item-img img-fluid" %>
+                  <% else %>
+                    <%= image_tag "Dummy001.png", class:"item-img img-fluid" %>
+                  <% end %>
+                </div>
+                <div class='item-info'>
+                  <table class="table table-sm">
+                    <thead>
+                      <tr>
+                        <th scope="col">名前</th>
+                        <td><%= item.name %> </td>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row">管理番号</th>
+                        <td><%= item.control_number %> </td>
+                      </tr>
+                      <tr>
+                        <th scope="row">カテゴリ</th>
+                        <td><%= item.category.name %> </td>
+                      </tr>
+                      <tr>
+                        <th scope="row">部門</th>
+                        <td><%= item.department.name %> </td>
+                      </tr>
+                      <tr>
+                        <th scope="row">ロケーション</th>
+                        <td><%= item.location.name %> </td>
+                      </tr>
+                      <tr>
+                        <th scope="row">利用状況</th>
+                        <td>
+                          <% if item.lending != nil %>
+                            <span class="">貸出中!!</span>
+                            <span class="">(<%= item.lending.member.name %>)</span>
+                          <% else %>
+                            <span class=""></span>
+                          <% end %>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              <% end %>
+            </li>
+          <% end %>
+        <% else %> 
+          該当する備品はありません
+        <% end %>
+      </div>
+    </ul>
+  </div>
+</div>
+
+
+
