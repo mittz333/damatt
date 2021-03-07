@@ -7,7 +7,7 @@
   padding: 1vh 2vw;
   display: flex;
   flex-direction: column;
-  background-color: rgb(47, 102, 255);
+  background-color: #beb9c9c0;
   
 }
 
@@ -17,7 +17,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: greenyellow;
+  /* background-color: greenyellow; */
 }
 
 .search-bar-contents {
@@ -25,7 +25,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: green;
+  background-color: rgb(236, 233, 233);
 }
 
 .damatt-icon {

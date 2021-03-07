@@ -6,8 +6,8 @@
     </div>
     <div class='search-bar-contents'>
       <%= search_form_for @p, url: search_items_path do |f| %>
-        <%= f.label :name_or_detail_cont, 'キーワード' %>
-        <%= f.search_field :name_or_detail_cont, class: "input-box", placeholder: "キーワードを入力" %>
+        <%= f.label :name_or_detail_or_control_number_cont, 'キーワード' %>
+        <%= f.search_field :name_or_detail_or_control_number_cont, class: "input-box", placeholder: "キーワードを入力" %>
         <br>
         <%= f.label :category_id_eq, 'カテゴリー' %>
         <%= f.collection_select :category_id_eq, Category.all, :id, :name, include_blank: '指定無し' %>

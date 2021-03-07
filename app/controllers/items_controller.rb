@@ -5,7 +5,8 @@ class ItemsController < ApplicationController
 
   def index
     # binding.pry
-    @items = Item.order(created_at: 'DESC').includes(:member)
+    @items = Item.includes(:member).page(params[:page]).per(10).order(created_at: 'DESC')
+    # @items = Item.includes(:member).order(created_at: 'DESC')
     # @items = Item.all
   end
 
@@ -69,8 +70,9 @@ class ItemsController < ApplicationController
 
   def search
     # binding.pry
-    @results = @p.result.includes(:member)  # 検索条件にマッチした商品の情報を取得
-    @items = @results
+    @results = @p.result.includes(:member).page(params[:page]).per(10).order(created_at: 'DESC')  # 検索条件にマッチした商品の情報を取得
+    # @items = Item.includes(:member).page(params[:page]).per(10).order(created_at: 'DESC')
+    # @items = @results
     # binding.pry
   end
 
