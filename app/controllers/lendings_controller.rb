@@ -18,7 +18,8 @@ class LendingsController < ApplicationController
     @lending = Lending.new(lending_params)
     # binding.pry
     if @lending.save
-      redirect_to root_path
+      # redirect_to root_path
+      redirect_back(fallback_location: root_path)
     else
       # render :new
     end
@@ -39,7 +40,8 @@ class LendingsController < ApplicationController
     # binding.pry
     @lending = Lending.find_by(member_id: current_member.id, item_id: params[:item_id])
     @lending.destroy if member_signed_in? 
-    redirect_to root_path
+    # redirect_to root_path
+    redirect_back(fallback_location: root_path)
   end
 
   private

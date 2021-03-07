@@ -18,7 +18,8 @@ class ReservationsController < ApplicationController
     @reservation = Reservation.new(reservation_params)
     # binding.pry
     if @reservation.save
-      redirect_to root_path
+      redirect_back(fallback_location: root_path)
+      # redirect_to root_path
     else
       # render :new
     end
@@ -40,7 +41,8 @@ class ReservationsController < ApplicationController
     reservation = Reservation.find(params[:id])
     # binding.pry
     reservation.destroy if member_signed_in? 
-    redirect_to root_path
+    redirect_back(fallback_location: root_path)
+    # redirect_to root_path
     # Reservationは同一itemで複数持てるから、注意
     # @reservation = Reservation.find_by(member_id: current_member.id, item_id: params[:item_id])
     # @reservation.destroy if member_signed_in? 
