@@ -8,4 +8,7 @@ Rails.application.routes.draw do
       get 'search'
     end
   end
+  devise_scope :member do
+    post 'members/guest_sign_in', to: 'members/sessions#new_guest'
+  end
 end

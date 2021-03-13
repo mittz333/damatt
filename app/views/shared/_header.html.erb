@@ -19,18 +19,20 @@
   </div>
   <div class='nav'>
     <ul class='lists-left'>
-      パンくずリスト
+      <%# パンくずリスト %>
     </ul>
     <ul class='lists-center'>
-      ページ情報
+      <br>
+      <h1>共有備品管理アプリケーション</h1>
     </ul>
     <ul class='lists-right'>
       <% if member_signed_in? %>
-        <li><%= link_to current_member.name, edit_member_registration_path, class: "member-name" %>さん</li>
-        <li><%= link_to 'ログアウト', destroy_member_session_path, method: :delete, class: "logout" %></li>
+        <li><%= link_to current_member.name + 'さん', edit_member_registration_path, class: "member-name btn btn-info" %></li>
+        <li><%= link_to 'ログアウト', destroy_member_session_path, method: :delete, class: "logout btn btn-danger" %></li>
       <% else %>
-        <li><%= link_to 'ログイン', new_member_session_path, class: "login" %></li>
-        <li><%= link_to '新規登録', new_member_registration_path, class: "sign-up" %></li>
+        <li><%= link_to 'ログイン', new_member_session_path, class: "login btn btn-primary" %></li>
+        <li><%= link_to '新規登録', new_member_registration_path, class: "sign-up btn btn-warning" %></li>
+        <li><%= link_to 'ゲストログイン', members_guest_sign_in_path, method: :post, class: "sign-up btn btn-sm btn-success" %></li>
       <% end %>
     </ul>
   </div>

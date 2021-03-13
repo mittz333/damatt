@@ -9,6 +9,11 @@
   flex-direction: column;
   background-color: #beb9c9c0;
   
+  background-image: url("damatt-header01.jpg");
+  /* background-image: url("damatt-header01.jpg"); */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top center;
 }
 
 .damatt-icon-wrap {
@@ -73,6 +78,13 @@
 .lists-left {
   display: flex;
   min-width: 200px;
+
+}
+
+.lists-center {
+  display: flex;
+  min-width: 200px;
+  color: yellow;
 
 }
 

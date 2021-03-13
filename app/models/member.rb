@@ -7,4 +7,13 @@ class Member < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
  belongs_to :department
+
+ def self.guest
+    find_or_create_by(email: "test@test.com") do |member|
+      member.password = "123456"
+      member.name = "テスト"
+      member.department_id = 11
+    end
+  end
+
 end
