@@ -9,8 +9,9 @@
   flex-direction: column;
   background-color: #beb9c9c0;
   
-  background-image: url('/assets/images/damatt-header01.jpg');
-  /* background-image: url("<%= asset_path('damatt-header01.jpg') %>"); */
+  background-image: url('../../assets/images/damatt-header01.jpg');
+  /* background-image: url(<%= asset_path 'damatt-header01.jpg' %>) */
+  /* background-image: image-url('damatt-header01.jpg'); */
   background-size: cover;
   background-repeat: no-repeat;
   background-position: top center;
