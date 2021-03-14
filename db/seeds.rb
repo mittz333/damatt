@@ -1,7 +1,25 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+Member.create(email:'sample1@sample.com',password:'sample1',name:'1号',department_id:'21')
+Member.create(email:'sample2@sample.com',password:'sample2',name:'サンプル2号',department_id:'0')
+Member.create(email:'sample3@sample.com',password:'sample3',name:'山下３号',department_id:'13')
+Member.create(email:'sample4@sample.com',password:'sample4',name:'三条４号',department_id:'18')
+Member.create(email:'sample5@sample.com',password:'sample5',name:'木下５号',department_id:'21')
+Member.create(email:'sample6@sample.com',password:'sample6',name:'冨田繁',department_id:'15')
+Member.create(email:'test01@test.com',password:'test01',name:'テストユーザー',department_id:'11')
+Member.create(email:'guest01@example.com',password:'guest01',name:'テストユーザー',department_id:'11')
+
+Item.create(name:'aaa',category_id:'11',detail:'vvv',location_id:'1',department_id:'11',purchase_date:'43963',member_id:'1')
+Item.create(name:'hhh',category_id:'12',detail:'kkkk',location_id:'3',department_id:'16',purchase_date:'44117',member_id:'3')
+Item.create(name:'fsdfsdfdsfsdf',category_id:'12',detail:'dfsdfsdfsdfsdf',location_id:'4',department_id:'12',purchase_date:'44229',member_id:'3')
+Item.create(name:'ssfsdsfsdfsdfsdfsdfsd',category_id:'12',detail:'dfsdfsfs',location_id:'2',department_id:'12',purchase_date:'44257',member_id:'3')
+Item.create(name:'hjdfsdfsdfsdfasf',category_id:'21',detail:'sdsdfsdfasfas',location_id:'1',department_id:'14',purchase_date:'44268',member_id:'1')
+Item.create(name:'テスト商品',category_id:'12',detail:'てててててst',location_id:'5',department_id:'16',purchase_date:'42435',member_id:'3')
+Item.create(name:'サーバ機１号',category_id:'19',detail:'sファsファsdファsdファsd',location_id:'10',department_id:'99',purchase_date:'40605',member_id:'1')
+Item.create(name:'jkljkjlkjlkjljlkjlkj34',category_id:'31',detail:'dsdsdsdfsdf',location_id:'3',department_id:'21',purchase_date:'44252',member_id:'1')
+Item.create(name:'画像無し',category_id:'31',detail:'車車クラウン',location_id:'3',department_id:'21',purchase_date:'44252',member_id:'1')
+Item.create(name:'ああああああ',category_id:'31',detail:'良い良い良い',location_id:'4',department_id:'21',purchase_date:'44254',member_id:'1')
+Item.create(name:'これはテストの備品です',category_id:'12',detail:'共有のタブレットです。最新式',location_id:'5',department_id:'18',purchase_date:'44253',member_id:'4')
+Item.create(name:'aaaaaasssss',category_id:'21',detail:'eos kiss',location_id:'1',department_id:'21',purchase_date:'44261',member_id:'1')
+Item.create(name:'',category_id:'11',detail:'高性能ノート',location_id:'1',department_id:'31',purchase_date:'44262',member_id:'4')
+Item.create(name:'テスト備品3456',category_id:'11',detail:'特別なアプリあり',location_id:'4',department_id:'41',purchase_date:'44262',member_id:'5')
+Item.create(name:'共有ノート',category_id:'11',detail:'特殊ソフト内臓',location_id:'6',department_id:'13',purchase_date:'44259',member_id:'3')
+Item.create(name:'テスト商品aws',category_id:'19',detail:'貴重なお城',location_id:'1',department_id:'21',purchase_date:'44268',member_id:'1')
