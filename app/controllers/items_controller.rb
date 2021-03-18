@@ -1,7 +1,10 @@
 class ItemsController < ApplicationController
   before_action :authenticate_member!, except: [:index, :show]
   before_action :set_item, only: [:edit, :show, :destroy]
-  before_action :search_item, only: [:index, :search]
+  before_action :search_item, only: [:index, :search, :csv_search]
+
+  require 'csv'
+  require 'core_ext/string'
 
   def index
     # binding.pry
@@ -70,10 +73,39 @@ class ItemsController < ApplicationController
 
   def search
     # binding.pry
+    if params[:CSVoutput]
+      csv_search
+      # redirect_back(fallback_location: root_path)
+    end
     @results = @p.result.includes(:member).page(params[:page]).per(10).order(created_at: 'DESC')  # 検索条件にマッチした商品の情報を取得
     # @items = Item.includes(:member).page(params[:page]).per(10).order(created_at: 'DESC')
     # @items = @results
     # binding.pry
+  end
+
+  def csv_search
+    head :no_content
+
+    # @results_csv = @results
+    # @results_csv = @p.result.includes(:member).page(params[:page]).per(10).order(created_at: 'DESC')  # 検索条件にマッチした商品の情報を取得
+    @results_csv = @p.result.includes(:member).order(created_at: 'ASC')  # 検索条件にマッチした全ての備品情報を取得
+    # binding.pry
+
+    #ファイル名を指定
+    filename = 'Item_' + Time.current.strftime("%Y%m%d%H%M%S")
+
+    csv1 = CSV.generate do |csv|
+      #カラム名を1行目として入れる
+      csv << Item.column_names
+      # binding.pry
+
+      @results_csv.each do |result|
+        #各行の値を入れていく
+        csv << result.attributes.values_at(*Item.column_names)
+      end
+    end
+    # binding.pry
+    create_csv(filename, csv1)
   end
 
   private
@@ -95,4 +127,17 @@ class ItemsController < ApplicationController
     @p = Item.ransack(params[:q])  # 検索オブジェクトを生成
   end
   
+  def create_csv(filename, csv1)
+    # 文字コード変換のエラー対策
+    csv1.sjisable
+
+    #ファイル書き込み
+    File.open("./#{filename}.csv", "w", encoding: "SJIS") do |file|
+      file.write(csv1)
+    end
+    #send_fileを使ってCSVファイル作成後に自動でダウンロードされるようにする
+    stat = File::stat("./#{filename}.csv")
+    send_file("./#{filename}.csv", filename: "#{filename}.csv", length: stat.size)
+  end
+
 end

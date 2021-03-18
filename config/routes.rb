@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     resources :reservations, only: [:create, :index, :destroy]
     collection do
       get 'search'
+      get 'csv_search'
     end
   end
   devise_scope :member do
