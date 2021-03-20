@@ -94,16 +94,38 @@ class ItemsController < ApplicationController
     #ファイル名を指定
     filename = 'Item_' + Time.current.strftime("%Y%m%d%H%M%S")
 
-    csv1 = CSV.generate do |csv|
-      #カラム名を1行目として入れる
-      csv << Item.column_names
-      # binding.pry
+    columns = ["category_name", "location_name", "department_name"] #追加分
 
-      @results_csv.each do |result|
-        #各行の値を入れていく
-        csv << result.attributes.values_at(*Item.column_names)
+    csv1 = CSV.generate do |csv|
+      
+      csv << Item.column_names + columns
+      # csv << columns
+        @results_csv.each do |result|
+        result_attributes = result.attributes
+       #user.attributesオブジェクトにtown_nameというキー名でtownテーブルのnameカラムを追加する
+       #includesで結合しても呼び出すときはuser.nameではなくuser.town.nameなので注意
+        result_attributes["category_name"] = result.category.name
+        result_attributes["location_name"] = result.location.name
+        result_attributes["department_name"] = result.department.name
+        csv << result_attributes.values_at(*Item.column_names) + result_attributes.values_at(*columns)
+        # csv << result_attributes.values_at(*columns)
       end
     end
+
+    # csv1 = CSV.generate do |csv|
+    #   #カラム名を1行目として入れる
+    #   csv << columns
+    #   # binding.pry
+
+    #   @results_csv.each do |result|
+    #     result_attribules = result.attributes
+    #     user_attributes["category_name"] = result.category.name
+    #     user_attributes["location_name"] = result.location.name
+    #     user_attributes["department_name"] = result.department.name
+    #     #各行の値を入れていく
+    #     csv << result_attribules.values_at(*columns)
+    #   end
+    # end
     # binding.pry
     create_csv(filename, csv1)
   end

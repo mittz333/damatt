@@ -1,0 +1,5 @@
+id,name,category_name,location_name,department_name,control_number
+1,aaa,ノートPC,大阪,大阪技術・管理,""
+17,"",ノートPC,大阪,岡山工場,345－6789
+18,テスト備品3456,ノートPC,北海道,北海道工場,987－6543
+19,共有ノート,ノートPC,名古屋,大阪工場,222－3456
