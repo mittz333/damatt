@@ -107,7 +107,8 @@ class ItemsController < ApplicationController
         result_attributes["category_name"] = result.category.name
         result_attributes["location_name"] = result.location.name
         result_attributes["department_name"] = result.department.name
-        csv << result_attributes.values_at(*Item.column_names) + result_attributes.values_at(*columns)
+        # csv << result_attributes.values_at(*Item.column_names) + result_attributes.values_at(*columns)
+        csv << result_attributes.values_at(*Item.column_names , *columns)
         # csv << result_attributes.values_at(*columns)
       end
     end
