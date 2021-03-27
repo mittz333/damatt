@@ -12,9 +12,9 @@
         <%= f.label :category_id_eq, 'カテゴリー' %>
         <%= f.collection_select :category_id_eq, Category.all, :id, :name, include_blank: '指定無し' %>
         <%# <br> %>
-        <%= f.submit '検索', class:"btn btn-info mx-5",name: "search",'data-disable-with' => false %>
+        <%= f.submit '検索', class:"btn btn-info mx-1 search-button",name: "search",'data-disable-with' => false %>
         <%# <%= f.submit '検索', class:"btn btn-info mx-5",name: "search" %>
-        <%= f.submit 'CSV出力', class:"btn btn-warning mx-5",name: "CSVoutput",'data-disable-with' => false %>
+        <%= f.submit 'CSV出力', class:"btn btn-warning mx-1 csv-button",name: "CSVoutput",'data-disable-with' => false %>
         <%# <%= f.submit 'CSV出力', class:"btn btn-warning mx-5",name: "CSVoutput" %>
         <%# <br> %>
       <% end %>
@@ -26,7 +26,7 @@
     <%# </ul> %>
     <ul class='lists-center'>
       <br>
-      <h1>共有備品管理アプリケーション</h1>
+      <h1>共有備品管理アプリ</h1>
     </ul>
     <ul class='lists-right'>
       <% if member_signed_in? %>

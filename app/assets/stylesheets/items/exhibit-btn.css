@@ -1,5 +1,6 @@
 .registration-btn {
-  width: 120px;
+  width: 12em;
+  height: 12em;
   background: #16af63;
   text-align: center;
   border-radius: 4%;
@@ -12,11 +13,12 @@
 .registration-btn-text {
   color: #fff;
   display: block;
-  font-size: 14px;
+  font-size: 1.5em;
   text-decoration: none;
   margin-bottom: 5px;
 }
 
 .registration-btn-icon {
-  width: 100%;
+  width: 80%;
+  height: 80%;
 }
