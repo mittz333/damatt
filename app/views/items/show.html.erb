@@ -1,48 +1,49 @@
 <%= render "shared/second-header" %>
 
 <div class="item-show">
-  <h4 class="name">
-    <%= @item.name %>
-  </h4>
+  <h2 class="name">
+    <%= "#{[@item.id]}" %> <%= @item.name %>
+  </h2>
   <%= render "lendingstatus" %>
   <div class="item-box container">
     <div class="row">
-      <div class='item-img-content col-lg-4 col-sm-12'>
+      <div class='item-img-content col-lg-4 col-md-12'>
         <% if @item.image.attached? %>
           <%= image_tag @item.image , class: "item-box-img img-fluid" %>
         <% else %>
           <%= image_tag "Dummy001.png", class:"item-box-img img-fluid" %>
         <% end %>             
       </div>
-
-      <table class="detail-table col-lg-8 col-sm-12">
-        <tbody>
-          <tr>
-            <th class="detail-item">カテゴリー</th>
-            <td class="detail-value"><%= @item.category.name %></td>
-          </tr>
-          <tr>
-            <th class="detail-item">詳細</th>
-            <td class="detail-value"><%= @item.detail %></td>
-          </tr>
-          <tr>
-            <th class="detail-item">ロケーション</th>
-            <td class="detail-value"><%= @item.location.name %></td>
-          </tr>
-          <tr>
-            <th class="detail-item">部門</th>
-            <td class="detail-value"><%= @item.department.name %></td>
-          </tr>
-          <tr>
-            <th class="detail-item">管理者</th>
-            <td class="detail-value"><%= @item.member.name %></td>
-          </tr>
-          <tr>
-            <th class="detail-item">購入日</th>
-            <td class="detail-value"><%= @item.purchase_date %></td>
-          </tr>
-        </tbody>
-      </table>
+      <div class='detail-table-wrap col-lg-8 col-md-12'>
+        <table class="table">
+          <tbody>
+            <tr>
+              <th class="detail-item">カテゴリー</th>
+              <td class="detail-value"><%= @item.category.name %></td>
+            </tr>
+            <tr>
+              <th class="detail-item">詳細</th>
+              <td class="detail-value"><%= @item.detail %></td>
+            </tr>
+            <tr>
+              <th class="detail-item">ロケーション</th>
+              <td class="detail-value"><%= @item.location.name %></td>
+            </tr>
+            <tr>
+              <th class="detail-item">部門</th>
+              <td class="detail-value"><%= @item.department.name %></td>
+            </tr>
+            <tr>
+              <th class="detail-item">管理者</th>
+              <td class="detail-value"><%= @item.member.name %></td>
+            </tr>
+            <tr>
+              <th class="detail-item">購入日</th>
+              <td class="detail-value"><%= @item.purchase_date %></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
     <div class="deleteedit-wrap">
       <% if member_signed_in? && @item.lending == nil %>
