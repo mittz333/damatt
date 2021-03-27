@@ -2,9 +2,11 @@
     <div class='lent-out'>
       <span>貸出中!!</span>
     </div>
-    使用者：
-    <%= @item.lending.member.name %>
-    (部門：
-    <%= @item.lending.member.department.name %>
-    )
+    <div class='lent-out-user'>
+      使用者：
+      <%= @item.lending.member.name %>
+      (部門：
+      <%= @item.lending.member.department.name %>
+      )
+    </div>
   <% end %>  
