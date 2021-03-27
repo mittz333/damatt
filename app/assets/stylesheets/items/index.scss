@@ -51,12 +51,15 @@ a {
   
   list-style: none;
   background-color: #f8f8f8;
+  font-size: 2vh;
+
 }
 
 .item-lists>.list {
   width: 37vh;
   padding: 1vw;
   background-color: #FFF;
+  font-size: 2vh;
 }
 
 .submenu {
@@ -67,7 +70,6 @@ a {
 
 .item-img-content {
   position: relative;
-  
 }
 
 .item-img {
@@ -77,14 +79,16 @@ a {
 
 }
 
-
-
 .item-info {
   background-color: #FFF;
   color: black;
   padding: 1vw;
-  font-size: 1vh;
+  font-size: 2vh;
 }
+
+// .item-table{
+//   font-size: 2vh;
+// }
 
 .item-name {
   font-size: 2.5vh;
