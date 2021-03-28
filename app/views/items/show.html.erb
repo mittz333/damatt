@@ -108,7 +108,7 @@
   <h2>予約登録</h2>
   <%= form_with(model: [@item, @reservation], local: true) do |f|%>
     <div class="form-group">
-      <div class='input-lending-wrap'>
+      <div class='input-reservation-wrap'>
         <%= f.label :starttime, '予約開始時間' %>
         <%= f.datetime_select(
                       :starttime,
@@ -123,7 +123,7 @@
                       time_separator: '',
                       datetime_separator: "___") %>
       </div>
-      <div class='input-lending-wrap'>
+      <div class='input-reservation-wrap'>
         <%= f.label :finishtime, '予約終了時間' %>
         <%= f.datetime_select(
                       :finishtime,
@@ -167,7 +167,7 @@
               <td><%= reservation.member.department.name %> </td>
               <% if member_signed_in? && reservation.member_id == current_member.id %>
                 <td><%= button_to '取消', item_reservation_path(@item,reservation), method: :delete \
-                , class: "btn btn-danger btn-sm" , data: { confirm: '予約取消しますか？' } %> </td>
+                , class: "btn btn-danger btn-lg" , data: { confirm: '予約取消しますか？' } %> </td>
               <% else %>
                 <td></td>
               <% end %>
