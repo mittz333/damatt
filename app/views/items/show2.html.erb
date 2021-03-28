@@ -63,7 +63,7 @@
     <div class="form-group">
       <div class='input-lending-wrap'>
         <%= f.label :starttime, '開始時間' %>
-        <%= f.datetime_field(
+        <%= f.datetime_select(
                       :starttime,
                       class:'select-starttime',
                       id:"starttime-datetime",
@@ -78,7 +78,7 @@
       </div>
       <div class='input-lending-wrap'>
         <%= f.label :finishtime, '終了時間' %>
-        <%= f.datetime_field(
+        <%= f.datetime_select(
                       :finishtime,
                       class:'select-finishtime',
                       id:"finishtime-datetime",
