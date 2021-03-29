@@ -108,9 +108,9 @@
   <h2>予約登録</h2>
   <%= form_with(model: [@item, @reservation], local: true) do |f|%>
     <div class="form-group">
-      <div class='input-reservation-wrap'>
-        <%= f.label :starttime, '予約開始時間' %>
-        <%= f.datetime_select(
+      <div class='input-lending-wrap'>
+        <%= f.label :starttime, '予約開始' %>
+        <%= f.datetime_field(
                       :starttime,
                       class:'select-starttime',
                       id:"starttime-datetime",
@@ -123,9 +123,9 @@
                       time_separator: '',
                       datetime_separator: "___") %>
       </div>
-      <div class='input-reservation-wrap'>
-        <%= f.label :finishtime, '予約終了時間' %>
-        <%= f.datetime_select(
+      <div class='input-lending-wrap'>
+        <%= f.label :finishtime, '予約終了' %>
+        <%= f.datetime_field(
                       :finishtime,
                       class:'select-finishtime',
                       id:"finishtime-datetime",
@@ -150,8 +150,8 @@
         <thead>
           <tr>
             <th>No.</th>
-            <th>開始時間</th>
-            <th>終了時間</th>
+            <th>開始</th>
+            <th>終了</th>
             <th>利用者</th>
             <th>部門</th>
             <th>取消</th>

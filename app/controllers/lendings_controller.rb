@@ -47,7 +47,10 @@ class LendingsController < ApplicationController
   private
 
   def lending_params
-    params.require(:lending).permit("starttime(1i)", "starttime(2i)", "starttime(3i)", "starttime(4i)", "starttime(5i)", "finishtime(1i)", "finishtime(2i)", "finishtime(3i)", "finishtime(4i)", "finishtime(5i)")
+    # binding.pry
+    # params.require(:lending).permit("starttime(1i)", "starttime(2i)", "starttime(3i)", "starttime(4i)", "starttime(5i)", "finishtime(1i)", "finishtime(2i)", "finishtime(3i)", "finishtime(4i)", "finishtime(5i)")
+    #     .merge(member_id: current_member.id, item_id: params[:item_id])
+    params.require(:lending).permit("starttime", "finishtime")
         .merge(member_id: current_member.id, item_id: params[:item_id])
     # params.permit(:starttime, :finishtime, :item_id)
     #     .merge(member_id: current_member.id)
