@@ -6,10 +6,6 @@ a {
   background: #f8f8f8;
 }
 
-.service-title {
-  font-size: 8vh;
-}
-
 /* 備品一覧 */
 
 .item-contents {
@@ -34,15 +30,6 @@ a {
   font-weight: bold;
 }
 
-.box1 {
-  background-color: #3ccace;
-}
-
-.box2 {
-  background-color: #acacac;
-}
-
-
 .item-lists {
   width: 100vw;
   display: flex;
@@ -61,12 +48,6 @@ a {
   background-color: #FFF;
   font-size: 2vh;
 }
-
-.submenu {
-  background-color: #3ccace;
-  height: 80vh;
-}
-
 
 .item-img-content {
   position: relative;

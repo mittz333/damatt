@@ -33,37 +33,6 @@
   object-fit: contain;
 }
 
-.item-price-box {
-  margin: 25px 0px;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-}
-
-.item-price-box>.item-price {
-  font-size: 4vh;
-  font-weight: bold;
-}
-
-.item-price-box>.item-postage {
-  font-size: 16px;
-}
-
-
-.item-red-btn {
-  text-align: center;
-  background-color: #ea352d;
-  font-size: 24px;
-  font-weight: bold;
-  color: #FFF;
-  margin: 20px 0px;
-  padding: 2vh 4vw;
-}
-
-.or-text {
-  font-size: 20px;
-}
-
 .item-destroy {
   background-color: lightgray;
   text-align: center;
@@ -80,38 +49,6 @@
   color: white;
   margin: 20px 10px;
   padding: 2vh 4vw;
-}
-
-.item-lending {
-  background-color: lightblue;
-  text-align: center;
-  font-size: 48px;
-  color: black;
-  margin: 20px 0px;
-  padding: 2vh 2vw;
-}
-
-.item-return {
-  background-color: lightpink;
-  text-align: center;
-  font-size: 48px;
-  color: black;
-  margin: 20px 0px;
-  padding: 2vh 2vw;
-}
-
-.item-reservation {
-  background-color: lightgreen;
-  text-align: center;
-  font-size: 48px;
-  color: black;
-  margin: 20px 0px;
-  padding: 2vh 2vw;
-}
-
-.item-explain-box {
-  font-size: 18px;
-  margin: 40px 0px;
 }
 
 .detail-table-wrap {
@@ -141,108 +78,12 @@
   position: relative;
 }
 
-.favorite-btn {
-  border-radius: 40px;
-  width: 15vw;
-  min-width: 200px;
-  color: rgb(249, 75, 0);
-  border: 2px solid #ffb340;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-right: 20px;
-}
-
-.favorite-star-icon {
-  margin-right: 5px;
-}
-
-.report-btn {
-  border-radius: 40px;
-  width: 15vw;
-  min-width: 200px;
-
-  padding: 1vh 0;
-  color: black;
-  border: 2px solid #2d2d2d;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.report-flag-icon {
-  margin-right: 5px;
-}
-
-
-/* /商品の概要 */
-
-.comment-box {
-  width: 40vw;
-  background-color: #fff;
-  margin: 5vh 0;
-  text-align: center;
-}
-
-.comment-text {
-  width: 100%;
-  height: 100px;
-  padding: 10px;
-  border: solid 2px #dedede;
-  resize: none;
-}
-
-.comment-warn {
-  padding: 10px;
-  font-size: 14px;
-  margin: 10px 0px;
-  text-align: left;
-}
-
-.comment-btn {
-  line-height: 48px;
-  background-color: #3CCACE;
-  border: 1px solid #3CCACE;
-  color: #fff;
-  width: 50%;
-  min-width: 150px;
-  font-size: 18px;
-  border-radius: 100px;
-  margin-bottom: 2vh;
-}
-
-.comment-flag {
-  display: flex;
-  justify-content: center;
-}
-
-.comment-flag-icon {
-  margin: 10px 5px 0 0;
-}
-
 .links {
   display: flex;
   justify-content: space-between;
   width: 50vw;
 
 }
-
-.change-item-btn {
-  font-size: 30px;
-  text-decoration: none;
-  color: #3CCACE;
-}
-
-.another-item {
-  display: block;
-  margin: 30px 0px 8px;
-  color: #3CCACE;
-  text-decoration: none;
-  font-weight: bold;
-  font-size: 23px;
-}
-
-/* 開始時間や終了時間 */
 
 .input-lending-wrap {
   display: flex;
@@ -269,32 +110,6 @@
   padding: 0 5px;
 }
 
-
-.input-reservation-wrap {
-  display: flex;
-  flex-wrap: wrap;
-  font-size: 1.5vh;
-  line-height: 3vh;
-  height: 100px;
-}
-
-.input-reservation-wrap select {
-  width: 120px;
-  margin-top: 5px;
-  height: 50px;
-  padding-left: 10px;
-  border-radius: 4px;
-  border: 1px solid #ccc;
-  background: #fff;
-  font-size: 2vh;
-  cursor: pointer;
-  /* justify-content: center; */
-}
-
-.input-reservation-wrap p {
-  line-height: 60px;
-  padding: 0 5px;
-}
 .btn-lending {
   height: 100px;
   width: 150px;
