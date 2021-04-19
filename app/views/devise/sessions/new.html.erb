@@ -17,6 +17,9 @@
             </div>
             <%= f.submit "ログイン", class: "btn btn-primary w-100 newsession-button" %>
             <div class="login__reminder">
+              <%= link_to 'ゲストログイン', members_guest_sign_in_path, method: :post, class: "sign-up btn btn-sm btn-success" %></li>
+            </div>
+            <div class="login__reminder">
               <%= link_to "パスワードをお忘れの方", new_password_path(resource_name), class: 'login__reminder-a' %>
             </div>
           <% end %>      
