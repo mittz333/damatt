@@ -6,9 +6,17 @@ class Member < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
- belongs_to :department
+  has_many :items
+  has_many :lendings
+  has_many :reservations
+  belongs_to :department
 
- def self.guest
+  with_options presence: true do
+    validates :name
+    validates :department_id
+  end
+
+  def self.guest
     find_or_create_by(email: "test@test.com") do |member|
       member.password = "123456"
       member.name = "テスト"
