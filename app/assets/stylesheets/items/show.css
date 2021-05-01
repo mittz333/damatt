@@ -117,6 +117,13 @@
   font-size: 2em;
 }
 
+.btn-lending2 {
+  height: 100px;
+  width: 250px;
+  margin-top: 5px;
+  font-size: 2em;
+}
+
 .lent-out {
   text-align: center;
   background-color: crimson;

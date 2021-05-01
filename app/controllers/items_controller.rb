@@ -49,7 +49,23 @@ class ItemsController < ApplicationController
     # 
     @reservations = Reservation.where(item_id: @item.id).order(starttime: 'ASC')
     # binding.pry
-
+    # 本日の予約が無いか調べ、あったらその情報をインスタンス変数(@reservation2)に入れてビューへ送る
+    if member_signed_in? 
+      @reservation2 = Reservation.where(item_id: @item.id, member_id: current_member.id, starttime: Date.current.all_day).order(starttime: 'ASC').limit(1)
+      if @reservation2.length != 0
+        # binding.pry
+        # 予約から利用用に、@lending2を作る
+        @lending2 = Lending.new
+        @lending2.starttime = @reservation2[0].starttime
+        @lending2.finishtime = @reservation2[0].finishtime
+      else
+        @lending2 = nil 
+      end
+    else
+      @reservation2 = nil
+      @lending2 = nil
+    end
+    # binding.pry
   end
 
   def edit

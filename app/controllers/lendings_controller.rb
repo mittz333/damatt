@@ -18,6 +18,12 @@ class LendingsController < ApplicationController
     @lending = Lending.new(lending_params)
     # binding.pry
     if @lending.save
+      # keyが1の時、紐付くReservationを削除する
+      if lending_params_key[:key] == "1"
+        reservation = Reservation.find(lending_params_key[:reservation_id])
+        # binding.pry
+        reservation.destroy 
+      end
       # redirect_to root_path
       redirect_back(fallback_location: root_path)
     else
@@ -56,6 +62,11 @@ class LendingsController < ApplicationController
     #     .merge(member_id: current_member.id)
     # params.permit(:starttime(1i), :starttime(2i), :starttime(3i), :starttime(4i), :starttime(5i), :finishtime(1i), :finishtime(2i), :finishtime(3i), :finishtime(4i), :finishtime(5i), :item_id)
     #     .merge(member_id: current_member.id)
+  end
+
+  def lending_params_key
+    params.require(:lending).permit("key","reservation_id")
+        .merge(member_id: current_member.id, item_id: params[:item_id])
   end
 
   def set_lending

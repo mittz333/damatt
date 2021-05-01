@@ -57,6 +57,38 @@
 </div>
 
 <div class="lending-wrap">
+  <% if @reservation2 != nil && @reservation2.length != 0 %>
+    <h2>本日の予約</h2>
+    <%= render "lendingstatus" %>
+    <%= form_with(model: [@item, @lending2], local: true) do |f|%>
+      <div class="form-group">
+        <div class='input-lending-wrap'>
+          <%= f.label :starttime, '開始時間' %>
+          <%= f.datetime_field(
+                        :starttime,
+                        class:'select-starttime',
+                        id:"starttime-datetime",) %>
+        </div>
+        <div class='input-lending-wrap'>
+          <%= f.label :finishtime, '終了時間' %>
+          <%= f.datetime_field(
+                        :finishtime,
+                        class:'select-finishtime',
+                        id:"finishtime-datetime",) %>
+        </div>
+        <%= f.hidden_field :key, value: 1 %>
+        <%= f.hidden_field :reservation_id, value: @reservation2[0].id %>
+      </div>
+      <div class="actions">
+        <% if @item.lending == nil %>
+          <%= f.submit "予約から利用", class: "btn btn-primary btn-lending2"  %>
+        <% end %>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+
+<div class="lending-wrap">
   <h2>利用状況・利用登録</h2>
   <%= render "lendingstatus" %>
   <%= form_with(model: [@item, @lending], local: true) do |f|%>
@@ -66,31 +98,17 @@
         <%= f.datetime_field(
                       :starttime,
                       class:'select-starttime',
-                      id:"starttime-datetime",
-                      use_month_numbers: true,
-                      prompt:'--',
-                      start_year: Time.current.year,
-                      end_year: (Time.current.year + 1),
-                      minute_step: 15,
-                      date_separator: '',
-                      time_separator: '',
-                      datetime_separator: "___") %>
+                      id:"starttime-datetime",) %>
       </div>
       <div class='input-lending-wrap'>
         <%= f.label :finishtime, '終了時間' %>
         <%= f.datetime_field(
                       :finishtime,
                       class:'select-finishtime',
-                      id:"finishtime-datetime",
-                      use_month_numbers: true,
-                      prompt:'--',
-                      start_year: Time.current.year,
-                      end_year: (Time.current.year + 1),
-                      minute_step: 15,
-                      date_separator: '',
-                      time_separator: '',
-                      datetime_separator: "___") %>
+                      id:"finishtime-datetime",) %>
       </div>
+      <%= f.hidden_field :key, value: 0 %>
+      <%= f.hidden_field :reservation_id, value: 0 %>
     </div>
     <div class="actions">
       <% if @item.lending == nil %>
@@ -113,30 +131,14 @@
         <%= f.datetime_field(
                       :starttime,
                       class:'select-starttime',
-                      id:"starttime-datetime",
-                      use_month_numbers: true,
-                      prompt:'--',
-                      start_year: Time.current.year,
-                      end_year: (Time.current.year + 1),
-                      minute_step: 15,
-                      date_separator: '',
-                      time_separator: '',
-                      datetime_separator: "___") %>
+                      id:"starttime-datetime",) %>
       </div>
       <div class='input-lending-wrap'>
         <%= f.label :finishtime, '予約終了' %>
         <%= f.datetime_field(
                       :finishtime,
                       class:'select-finishtime',
-                      id:"finishtime-datetime",
-                      use_month_numbers: true,
-                      prompt:'--',
-                      start_year: Time.current.year,
-                      end_year: (Time.current.year + 1),
-                      minute_step: 15,
-                      date_separator: '',
-                      time_separator: '',
-                      datetime_separator: "___") %>
+                      id:"finishtime-datetime",) %>
       </div>
     </div>
     <div class="actions">
