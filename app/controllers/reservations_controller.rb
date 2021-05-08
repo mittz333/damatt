@@ -16,12 +16,19 @@ class ReservationsController < ApplicationController
   def create
     # binding.pry
     @reservation = Reservation.new(reservation_params)
+
+    # 新規の予約について、既存の予約とバッティングしてたら、予約できなくする、のチェックはバリデーションでやってる
+
     # binding.pry
     if @reservation.save
       redirect_back(fallback_location: root_path)
       # redirect_to root_path
     else
+      # binding.pry
       # render :new
+      # redirect_back(fallback_location: root_path)
+      redirect_to item_path(params[:item_id])
+      # render item_path(params[:item_id])
     end
   end
 

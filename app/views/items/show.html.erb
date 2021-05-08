@@ -125,6 +125,7 @@
 <div class="reservation-wrap">
   <h2>予約登録</h2>
   <%= form_with(model: [@item, @reservation], local: true) do |f|%>
+    <%= render 'shared/error_messages', model: f.object %>
     <div class="form-group">
       <div class='input-lending-wrap'>
         <%= f.label :starttime, '予約開始' %>
