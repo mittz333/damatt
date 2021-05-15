@@ -137,8 +137,3 @@ config/environments/development.rb
 
 
 4. http://localhost:3000/ にアクセス
-
-https://gyazo.com/72fbb3ee8ca8d633289fd29af8f34021
-
-https://gyazo.com/8b750e1f069a145a0354852ebcecf39c
-
